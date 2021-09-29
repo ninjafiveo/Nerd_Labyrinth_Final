@@ -9,13 +9,13 @@ namespace Nerd_Labyrinth_Final
 
     class Game_Start
     {
-        
+        public static List<New_Player> NewPlayer = new List<New_Player>();
+        public static int number_of_players;
         public static void Intro_To_Game()
         {
             
             Console.WriteLine("Welcome. How many players: ");
-            int number_of_players = Convert.ToInt32(Console.ReadLine());
-            List<New_Player> NewPlayer = new List<New_Player>();
+            number_of_players = Convert.ToInt32(Console.ReadLine());
 
             for (int i = 0; i < number_of_players; i++)
             {
@@ -33,8 +33,6 @@ namespace Nerd_Labyrinth_Final
             }
 
 
-            
-
             foreach (var player in NewPlayer)
             {
                 Console.WriteLine($"Player Number: {player.PlayerNumber} || Player Name: {player.Name} || Player Age: {player.Age}");
@@ -45,7 +43,13 @@ namespace Nerd_Labyrinth_Final
 
         public static void Player_Check()
         {
-            Console.WriteLine();
+            for (int i = 0; i < number_of_players; i++)
+            {
+                Console.WriteLine($"{NewPlayer[i].Name} current score = {NewPlayer[i].PlayerScore}");
+            }
+
+            NewPlayer[1].PlayerScore = NewPlayer[1].PlayerScore + 1;
+            Console.WriteLine($"{NewPlayer[1].Name} New Score is: {NewPlayer[1].PlayerScore}");
         }
 
 
